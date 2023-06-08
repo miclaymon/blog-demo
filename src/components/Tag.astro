@@ -2,7 +2,7 @@
 const { tag } = Astro.props;
 ---
 <div class="tag">
-    <a href={`/tags/${tag}`} title={`#${tag}`} aria-label={`#${tag}`}>#{tag}</a>
+    <a href={`/${import.meta.env.PUBLIC_BASE}/tags/${tag}`} title={`#${tag}`} aria-label={`#${tag}`}>#{tag}</a>
 </div>
 <style>
     .tag {

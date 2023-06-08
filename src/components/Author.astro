@@ -4,14 +4,14 @@ const { author } = Astro.props;
 <div class="author">
     <section>
         <div class="author__avatar">
-            <img src={author.avatar} alt={author.name}>
+            <img src=`${author.avatar}` alt={author.name}>
         </div>
         <div class="author__text">
             <div class="author__name">
                 <p>{author.name}</p>
             </div>
             <div class="author__id">
-                <p><a href={`/user/${author.username}`}>{author.username}</a></p>
+                <p><a href={`/${import.meta.env.PUBLIC_BASE}/user/${author.username}`}>{author.username}</a></p>
             </div>
         </div>
     </section>
