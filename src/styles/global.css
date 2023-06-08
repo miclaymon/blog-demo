@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap');
+
+
+:root {
+    --screen-sm: 640px;
+    --screen-md: 768px;
+    --screen-lg: 1024px;
+}
 
 html {
     background-color: #ccc;
@@ -14,13 +22,13 @@ body {
 }
 
 a {
-    color: rgb(138, 66, 231);
+    color: rgb(178, 119, 255);
 }
 
 
 main {
     width: 100%;
-    max-width: 80ch;
+    max-width: 100%;
     line-height: 1.5;
     margin: 0 auto;
     padding: 0em 1.5em 1em 1.5em;
@@ -28,7 +36,7 @@ main {
 }
 
 article {
-    max-width: 800px;
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -50,8 +58,9 @@ article {
 .expanded {
     display: unset;
 }
-  
-@media screen and (min-width: 636px) {
+
+
+@media screen and (min-width: var(--screen-sm)) {
     .nav-links {
         margin-left: 5em;
         display: block;
@@ -70,6 +79,25 @@ article {
     }
 }
 
+
+@media screen and (min-width: var(--screen-md)) {
+    .nav-links {
+        margin-left: 5em;
+        display: block;
+        position: static;
+        width: auto;
+        background: none;
+    }
+
+    .nav-links a {
+        display: inline-block;
+        padding: 15px 20px;
+    }
+
+    .hamburger {
+        display: none;
+    }
+}
 
 
 
