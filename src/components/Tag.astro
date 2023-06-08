@@ -1,0 +1,27 @@
+---
+const { tag } = Astro.props;
+---
+<div class="tag">
+    <a href={`/tags/${tag}`} title={`#${tag}`} aria-label={`#${tag}`}>#{tag}</a>
+</div>
+<style>
+    .tag {
+        margin: 0;
+        padding: 0 0.5em;
+        display: inline-block;
+        border-color: silver;
+        border-radius: 5px;
+        text-decoration: none;
+        background-color: #eee;
+        box-shadow: 0 0 0.1em rgba(0, 0, 25, 0.1);
+    }
+    .tag a {
+        text-decoration: inherit;
+    }
+    .tag a:hover {
+        text-decoration: underline;
+    }
+    html.dark .tag {
+        background-color: #333;
+    }
+</style>

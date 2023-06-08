@@ -1,0 +1,72 @@
+---
+import Author from '@components/Author.astro';
+import Tags from '@components/Tags.astro';
+const { frontmatter } = Astro.props;
+const pubDateString = new Date(frontmatter.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+{(frontmatter.image) ? 
+    <div id="poster">
+        <picture id="poster">
+            <img src={frontmatter.image.url} alt={frontmatter.image.alt} />
+        </picture>
+    </div>
+    : false
+}
+<div class="wrapper">
+    <section>
+        {(frontmatter.pubDate) ? <p id="pubDate">{pubDateString}</p> : false }
+        {(frontmatter.title) ? <h1 id="title">{frontmatter.title}</h1> : false }
+        <!-- {(frontmatter.description) ? <p>{frontmatter.description}</p> : false } -->
+        {(frontmatter.tags) ? <Tags tags={frontmatter.tags} /> : false }
+    </section>
+    <section>
+        {(frontmatter.author) ? <Author author={frontmatter.author} /> : false }
+    </section>
+</div>
+<style>
+    .wrapper {
+        gap: 1.5em;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+    .wrapper > section {
+        display: flex;
+        flex-direction: column;
+    }
+    #poster {
+        width: calc(100% + 1.5em);
+        margin: 0 -0.75rem;
+        margin-bottom: 1.25em;
+    }
+    picture {
+        width: 100%;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    picture > img {
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+        min-height: 25vh;
+    }
+    #pubDate {
+        margin: 0;
+        font-size: large;
+        font-weight: 600;
+        line-height: normal;
+        font-family: "Inter", sans-serif;
+    }
+    #title {
+        margin: 0 auto;
+        font-size: 3rem;
+        font-weight: 900;
+        line-height: normal;
+        font-family: "Inter", sans-serif;
+    }
+</style>

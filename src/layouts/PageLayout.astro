@@ -1,0 +1,15 @@
+---
+import Layout from "./BaseLayout.astro";
+const { frontmatter } = Astro.props; // destructure frontmatter from Astro.props
+---
+<Layout title={frontmatter.title}>
+    <article>
+        <slot />
+    </article>
+</Layout>
+<style>
+    article {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+</style>
