@@ -5,7 +5,7 @@ pubDate: 2023-06-07T22:04:56-6:00
 title: "Demo Blog Post"
 description: "This is the first test post for the blog pages."
 author:
-    avatar: "https://lh3.googleusercontent.com/a/AAcHTtfepUwY6XOR-eXfVRWmizzjh1XFuLgZ30rqYTVgl5U=s83-c-mo"
+    avatar: "https://avatars.githubusercontent.com/u/28695888?v=4"
     username: "@miclaymon"
     name: "Michael Laymon"
 image:
