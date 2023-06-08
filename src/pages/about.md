@@ -8,4 +8,4 @@ author:
     name: "Michael Laymon"
 ---
 
-This is a demo website made using [Astro](https://astro.build). The [blog posts](/posts), [about](/about), and [contact](/contact) pages are written in Markdown and converted to HTML by Astro.
+This is a demo website made using [Astro](https://astro.build). The [blog posts](/blog-demo/posts), [about](/blog-demo/about), and [contact](/blog-demo/contact) pages are written in Markdown and converted to HTML by Astro.
