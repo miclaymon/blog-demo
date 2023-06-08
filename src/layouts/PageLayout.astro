@@ -1,15 +1,61 @@
 ---
 import Layout from "./BaseLayout.astro";
+import RecentPosts from "@components/RecentPosts.astro";
 const { frontmatter } = Astro.props; // destructure frontmatter from Astro.props
 ---
 <Layout title={frontmatter.title}>
-    <article>
-        <slot />
-    </article>
+    <main class="page">
+        <article>
+            <h1 id="title">{frontmatter.title}</h1>
+            <slot />
+        </article>
+        <RecentPosts />
+    </main>
 </Layout>
 <style>
+    main {
+        padding-top: 2em !important;
+    }
+
     article {
+        display: block;
         max-width: 800px;
         margin: 0 auto;
+    }
+
+    #title {
+        margin: 0 auto;
+        font-size: 3rem;
+        font-weight: 900;
+        line-height: normal;
+        font-family: "Inter", sans-serif;
+    }
+
+    main.page {
+        display: flex;
+        gap: 1em;
+        flex-direction: row;
+        justify-content: stretch;
+        align-items: flex-start;
+    }
+
+    main.page > article {
+        padding: 0.5em 1em;
+    }
+
+    main.page > article p {
+        text-align: justify;
+    }
+    
+    @media screen and (min-width: 720px) {
+        main {
+            max-width: 100ch;
+        }
+    }
+
+    @media screen and (min-width: 900px) {
+        main {
+            max-width: 120ch;
+        }
     }
 </style>

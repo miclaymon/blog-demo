@@ -11,3 +11,16 @@ const { frontmatter } = Astro.props; // destructure frontmatter from Astro.props
         </article>
     </main>
 </Layout>
+<style>
+    @media screen and (min-width: 720px) {
+        main {
+            max-width: 80ch;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        main {
+            max-width: 120ch;
+        }
+    }
+</style>
