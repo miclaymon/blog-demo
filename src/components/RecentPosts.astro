@@ -1,0 +1,46 @@
+---
+const limit = 5; // number of posts to show
+const posts = await Astro.glob('../pages/posts/*.md'); // returns an array of posts that live at ./src/pages/posts/*.md
+const filteredPosts = posts
+                        .filter((post: any) => !post.frontmatter.draft) // filter out drafts
+                        .sort((a: any, b: any) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime()) // sort by date
+                        .slice(0, limit); // limit number of posts
+---
+<aside id="Recent">
+    <h3>Recent Posts</h3>
+    <ul>
+        {filteredPosts.map((post: any) => <li><a href={post.url}>{post.frontmatter.title}</a></li>)}
+    </ul>
+</aside>
+<style>
+    aside {
+        min-width: 16em;
+        display: inline-block;
+        padding: 0.5em 0.75em;
+        padding-right: 1.25em;
+        border: 1px solid #ccc;
+        border-radius: 0.5em;
+        background-color: #f9f9f9;
+        box-shadow: 0 0 0.15em rgba(0, 0, 25, 0.2);
+        /* margin-top: 1em; */
+    }
+
+    html.dark aside {
+        border-color: #333;
+        background-color: #333;
+        transition: all 0.15s ease-in-out;
+    }
+
+    aside h3 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        font-family: "Inter", sans-serif;
+        margin: 0;
+    }
+
+    aside ul {
+        margin: 0;
+        padding: 0.5em 0;
+        padding-left: 1.25em;
+    }
+</style>
