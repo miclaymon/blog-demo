@@ -27,6 +27,12 @@ const { author } = Astro.props;
         box-shadow: 0 0 0.15em rgba(0, 0, 25, 0.2);
         margin-top: 1em;
     }
+    .author:hover {
+        background-color: #f0f0f0;
+        animation-duration: 0.5s;
+        animation-timing-function: ease-in-out;
+        /* mix-blend-mode: multiply; */
+    }
     .author p {
         margin: 0;
     }
@@ -64,5 +70,11 @@ const { author } = Astro.props;
     html.dark .author {
         border-color: #333;
         background-color: #333;
+        transition: all 0.15s ease-in-out;
+    }
+    html.dark .author:hover {
+        background-color: #3a3a3a;
+        transition: all 0.15s ease-in-out;
+        /* mix-blend-mode: multiply; */
     }
 </style>
