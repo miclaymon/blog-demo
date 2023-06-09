@@ -1,0 +1,42 @@
+---
+import Card from '@components/Card.astro';
+import Tags from '@components/Tags.astro';
+const { post } = Astro.props;
+
+// get the first two lines of content from the Astro props, which is the markdown blog content
+// this is a hacky way to get the first two lines of content from the markdown blog:
+const content = await post.Content;
+const compiledContent = await post.compiledContent();
+// console.log(compiledContent);
+// get the first two lines of content from the markdown blog
+let lines = [compiledContent.split(',')];
+// for each line, remove the HTML tags
+lines = lines.map(line => String(line).replace(/<[^>]*>?/gm, ''));
+console.log(lines);
+---
+<div class="post-preview">
+    <Card>
+        <h4>{post.frontmatter.title}</h4>
+        <p>by: {post.frontmatter.author.name}</p>
+        <p class="content"><small>{lines[0].substring(0, 140)}...</small></p>
+        <Tags tags={post.frontmatter.tags} />
+    </Card>
+</div>
+<style>
+    .post-preview > div.card {
+        padding: 0 0.5em;
+    }
+    .post-preview h4 {
+        margin: 0;
+        font-size: large;
+        font-family: "Inter", sans-serif;
+    }
+    .post-preview p {
+        margin: 0.5em 0;
+    }
+    .post-preview .content {
+        line-height: normal;
+        text-align: justify;
+        text-overflow: ellipsis;
+    }
+</style>
