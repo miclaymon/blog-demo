@@ -15,15 +15,21 @@ lines = lines.map(line => String(line).replace(/<[^>]*>?/gm, ''));
 console.log(lines);
 ---
 <div class="post-preview">
-    <Card>
-        <h4>{post.frontmatter.title}</h4>
-        <p>by: {post.frontmatter.author.name}</p>
-        <p class="content"><small>{lines[0].substring(0, 140)}...</small></p>
-        <Tags tags={post.frontmatter.tags} />
-    </Card>
+    <a href={post.url}>
+        <Card>
+            <h4>{post.frontmatter.title}</h4>
+            <p>by: {post.frontmatter.author.name}</p>
+            <p class="content"><small>{lines[0].substring(0, 140)}...</small></p>
+            <Tags tags={post.frontmatter.tags} />
+        </Card>
+    </a>
 </div>
 <style>
-    .post-preview > div.card {
+    .post-preview * {
+        text-decoration: none !important;
+        color: unset;
+    }
+    .post-preview > a > div.card {
         padding: 0 0.5em;
     }
     .post-preview h4 {
