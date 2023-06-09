@@ -1,25 +1,28 @@
 ---
+import PostPreview from '@components/PostPreview.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
-const title = "Posts";
+const pageTitle = "Posts";
 const posts = await Astro.glob("./*.md");
 ---
-<BaseLayout title={title}>
+<BaseLayout title={pageTitle}>
     <main>
         <article>
             <br>
-            <h1>{title}</h1>
-            <p>Aliquip excepteur consequat occaecat fugiat consequat est aliqua excepteur amet voluptate ad amet.</p>
-            
-            <ul>
-                {posts.map((post) => <li><a href={post.url}>{post.frontmatter.title}</a></li>)}
-            </ul>
+            <h1 id="title">{pageTitle}</h1>
+            <p></p>
+            <section class="posts">
+                {posts.map((post) => <PostPreview post={post} />)}
+            </section>
         </article>
     </main>
 </BaseLayout>
 <style>
-    h1 {
-        margin: 0 0 1rem 0;
-        font-size: 2rem;
+    #title {
+        margin: 0 auto;
+        font-size: 3rem;
+        font-weight: 900;
+        line-height: normal;
+        font-family: "Inter", sans-serif;
     }
     main {
         padding: 1rem;
@@ -28,6 +31,13 @@ const posts = await Astro.glob("./*.md");
         max-width: 100%;
         margin: 0 auto;
         padding: 0 1rem;
+    }
+
+    .posts {
+        display: grid;
+        /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-gap: 1rem;
     }
 
     @media screen and (min-width: 720px) {
