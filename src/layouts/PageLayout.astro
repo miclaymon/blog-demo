@@ -2,11 +2,12 @@
 import Layout from "./BaseLayout.astro";
 import RecentPosts from "@components/RecentPosts.astro";
 const { frontmatter } = Astro.props; // destructure frontmatter from Astro.props
+const pageTitle = frontmatter ? frontmatter.title : Astro.props.title;
 ---
-<Layout title={frontmatter.title}>
+<Layout title={pageTitle}>
     <main class="page">
         <article>
-            <h1 id="title">{frontmatter.title}</h1>
+            <h1 id="title">{pageTitle}</h1>
             <slot />
         </article>
         <RecentPosts />
@@ -18,9 +19,10 @@ const { frontmatter } = Astro.props; // destructure frontmatter from Astro.props
     }
 
     article {
+        width: 100%;
         display: block;
         max-width: 800px;
-        margin: 0 auto;
+        /* margin: 0 auto; */
     }
 
     #title {
