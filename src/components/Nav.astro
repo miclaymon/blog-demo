@@ -3,17 +3,18 @@ import ThemeIcon from './ThemeIcon.astro';
 ---
 <nav class="nav">
     <section>
-        <img src=`/${import.meta.env.PUBLIC_BASE}/assets/astro-icon-light.png` width="64px" alt="Astro logo" style="display: inline-block; margin-right: 1em;">
+        <a href=`/${import.meta.env.PUBLIC_BASE}/`><img src=`/${import.meta.env.PUBLIC_BASE}/assets/astro-icon-light.png` width="64px" alt="Astro logo" id="logo"></a>
         <section style="display: inline-block;">
             <div style="display: inline-block;">
                 <!-- <img src="https://docs.astro.build/assets/full-logo-dark.png" width="300" alt="Astro Logo" /> -->
-                <h1 style="display: inline-block;">astro blog</h1>
+                <a href=`/${import.meta.env.PUBLIC_BASE}/`><h1 id="logo-mark" style="display: inline-block; margin-top: -0.33em;">astro blog</h1></a>
             </div>
-            <div>
+            <div class="nav-links">
                 <a href=`/${import.meta.env.PUBLIC_BASE}/`>Home</a>
                 <a href=`/${import.meta.env.PUBLIC_BASE}/about`>About</a>
                 <a href=`/${import.meta.env.PUBLIC_BASE}/contact`>Contact</a>
                 <a href=`/${import.meta.env.PUBLIC_BASE}/posts`>Posts</a>
+                <a href=`/${import.meta.env.PUBLIC_BASE}/tags`>Tags</a>
             </div>
         </section>
     </section>
@@ -26,13 +27,18 @@ import ThemeIcon from './ThemeIcon.astro';
     </section>
 </nav>
 <style>
-    h1 {
+    #logo {
+        display: inline-block;
+    }
+    #logo-mark {
         color: white;
+        display: inline-block;
         font-size: 4rem;
         font-weight: 900;
         font-family: "Bagel Fat One", "Inter", "Segoe UI", sans-serif;
         font: 4rem "Bagel Fat One";
         margin: 0;
+        margin-top: calc(1em/3);
     }
     .nav {
         display: flex;
@@ -42,6 +48,12 @@ import ThemeIcon from './ThemeIcon.astro';
         background: var(--color-bg);
         background-image: var(--accent-gradient);
         color: var(--color-text);
+    }
+    .nav-links {
+        display: flex;
+        gap: 1.25em;
+        justify-content: space-between;
+        align-items: center;
     }
     .nav a {
         margin-right: 1rem;
