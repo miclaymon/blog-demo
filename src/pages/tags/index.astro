@@ -1,0 +1,26 @@
+---
+import PageLayout from '@layouts/PageLayout.astro';
+import Tag from '@components/Tag.astro';
+const allPosts = await Astro.glob('../posts/*.md');
+const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
+const pageTitle = "Tags";
+---
+<PageLayout title={pageTitle}>
+    <br />
+    <section class="tags">
+        {tags
+            .sort((a, b) => a.localeCompare(b)) // Sort alphabetically
+            .map((tag) => ( // Map to a list of links
+                <Tag tag={tag} />
+            ))
+        }
+    </section>
+</PageLayout>
+<style>
+    .tags {
+        display: flex; 
+        gap: 0.5em;
+        flex-wrap: wrap; 
+        margin: 0 auto;  
+    }
+</style>
